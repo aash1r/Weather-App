@@ -1,6 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:weather_app/widgets/add_info.dart';
+import 'package:weather_app/widgets/custom_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,60 +27,24 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             //card
-            SizedBox(
-              width: double.infinity,
-              child: Card(
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(13),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-                    child: const Padding(
-                      padding: EdgeInsets.all(13.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            "300°C",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 33),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Icon(
-                            Icons.cloud,
-                            size: 65,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Rain",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w200, fontSize: 20),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            const SizedBox(width: double.infinity,child: CustomCard(text: "300 C",icon: Icons.cloud,text1: "Rain",),),
+            Container(padding: const EdgeInsets.only(top: 5),alignment: Alignment.centerLeft,child: const Text("Weather Forecast",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 23),),),
             const SizedBox(
               height: 15,
             ),
-            const Placeholder(
-              fallbackWidth: 120,
-              fallbackHeight: 100,
-            ),
+            const SingleChildScrollView(scrollDirection: Axis.horizontal,child: Row(children: [
+              CustomCard(text: "09: 00",icon: Icons.cloud,
+              text1: "30.67",),CustomCard(text: "09: 00",icon: Icons.cloud,
+              text1: "30.67",),CustomCard(text: "09: 00",icon: Icons.cloud,
+              text1: "30.67",),CustomCard(text: "09: 00",icon: Icons.cloud,
+              text1: "30.67",),CustomCard(text: "09: 00",icon: Icons.cloud,
+              text1: "30.67",),
+              ],),),
+              Container(padding: const EdgeInsets.only(top: 5),alignment: Alignment.centerLeft,child: const Text("Additional Information",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 23),),),
             const SizedBox(
               height: 15,
             ),
-            const Placeholder(
-              fallbackHeight: 100,
-            )
+             const Row(mainAxisAlignment: MainAxisAlignment.spaceAround,children: [AddInfo(text2: "Humidity",text3: "94",icon: Icons.water_drop,),AddInfo(icon: Icons.wind_power,text2: "Wind Speed",text3: "7.67",),AddInfo(icon: Icons.umbrella,text2: "Pressure",text3: "1006",)],),
           ],
         ),
       ),
