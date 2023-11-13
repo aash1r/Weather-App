@@ -2,7 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.text, required this.icon, required this.text1});
+  const CustomCard(
+      {super.key, required this.text, required this.icon, required this.text1});
   final String text;
   final IconData icon;
   final String text1;
@@ -11,18 +12,19 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 10,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(13),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-          child:  Padding(
+          child: Padding(
             padding: const EdgeInsets.all(13.0),
             child: Column(
               children: [
                 Text(
                   text,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 33),
                 ),
